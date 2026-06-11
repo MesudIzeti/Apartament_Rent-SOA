@@ -1,0 +1,80 @@
+<div class="detail-container animate-fade" *ngIf="apartment; else notFound">
+  <div class="back-nav">
+    <button mat-button color="primary" routerLink="/apartments">
+      <mat-icon>arrow_back</mat-icon> Back to Directory
+    </button>
+  </div>
+
+  <div class="detail-grid">
+    <div class="media-column">
+      <img [src]="apartment?.imageUrl || 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800'" 
+           alt="{{ apartment?.title }}" 
+           class="main-detail-img">
+    </div>
+
+    <div class="info-column">
+      <div class="badge-row">
+        <span class="location-badge">
+          <mat-icon>location_on</mat-icon> {{ apartment?.location }}
+        </span>
+      </div>
+
+      <h1>{{ apartment?.title }}</h1>
+      
+      <div class="host-attribution">
+        <mat-icon class="user-icon">account_circle</mat-icon>
+        <span>Managed by: <strong>{{ apartment?.landlordName || 'Verified Host' }}</strong></span>
+      </div>
+
+      <div class="specs-bar">
+        <div class="spec-item">
+          <mat-icon>meeting_room</mat-icon>
+          <div class="spec-meta">
+            <span class="val">{{ apartment?.rooms }}</span>
+            <span class="lbl">{{ apartment?.rooms === 1 ? 'Room' : 'Rooms' }}</span>
+          </div>
+        </div>
+        
+        <div class="spec-item">
+          <mat-icon>straighten</mat-icon>
+          <div class="spec-meta">
+            <span class="val">{{ apartment?.sqft }} m²</span>
+            <span class="lbl">Total Area</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="description-block">
+        <h3>Property Overview</h3>
+        <p>{{ apartment?.description }}</p>
+      </div>
+
+      <div class="pricing-action-card">
+        <div class="price-box">
+          <span class="amount">€{{ apartment?.price }}</span>
+          <span class="period">/ month rent</span>
+        </div>
+        
+        <div class="actions-container">
+          <button mat-flat-button 
+                  [color]="hasAlreadyApplied() ? 'accent' : 'primary'" 
+                  class="primary-booking-btn" 
+                  [disabled]="hasAlreadyApplied()"
+                  (click)="onBookRequest()">
+            <mat-icon>{{ hasAlreadyApplied() ? 'assignment_turned_in' : 'vpn_key' }}</mat-icon> 
+            {{ hasAlreadyApplied() ? 'Application Already Submitted' : 'Request to Book Property' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #notFound>
+  <div class="error-wrapper">
+    <mat-icon class="sad-icon">search_off</mat-icon>
+    <h2>Apartment Listing Not Found</h2>
+    <p>The property code reference link you clicked does not exist or has been removed.</p>
+    <button mat-flat-button color="primary" routerLink="/apartments">Return to Marketplace</button>
+  </div>
+</ng-template>

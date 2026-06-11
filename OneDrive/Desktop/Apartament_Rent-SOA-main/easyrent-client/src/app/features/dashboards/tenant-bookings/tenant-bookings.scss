@@ -1,0 +1,90 @@
+.bookings-container {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.bookings-header {
+  margin-bottom: 30px;
+  h2 { font-size: 1.8rem; font-weight: 700; color: #111; margin-bottom: 4px; }
+  p { color: #666; font-size: 1rem; }
+}
+
+.bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.booking-card {
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+  border-radius: 10px !important;
+}
+
+.card-split {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px !important;
+
+  @media(max-width: 550px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+
+.info-side {
+  h3 { font-size: 1.3rem; margin: 10px 0 6px 0; color: #222; }
+  .loc-text { 
+    display: flex; align-items: center; gap: 4px; color: #666; font-size: 0.95rem; margin-bottom: 8px;
+    mat-icon { font-size: 16px; width: 16px; height: 16px; color: #3f51b5; }
+  }
+  .date-text { color: #999; display: block; }
+}
+
+.status-chip {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 4px;
+  text-transform: uppercase;
+  
+  &.pending { background-color: #fff3cd; color: #856404; }
+  &.approved { background-color: #d4edda; color: #155724; }
+  &.declined { background-color: #f8d7da; color: #721c24; }
+}
+
+.action-side {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @media(max-width: 550px) {
+    text-align: left;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.price-box {
+  .cost { font-size: 1.5rem; font-weight: 800; color: #3f51b5; }
+  .per { color: #666; font-size: 0.9rem; }
+}
+
+.empty-panel {
+  text-align: center;
+  padding: 60px 20px;
+  border: 2px dashed #e0e0e0;
+  border-radius: 12px;
+  background-color: #fafafa;
+
+  .empty-icon { font-size: 54px; width: 54px; height: 54px; color: #b0bec5; margin-bottom: 12px; }
+  h3 { font-size: 1.4rem; color: #37474f; margin-bottom: 6px; }
+  p { color: #78909c; margin-bottom: 20px; }
+}

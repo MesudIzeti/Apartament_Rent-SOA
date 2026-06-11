@@ -1,0 +1,45 @@
+<div class="bookings-container" style="max-width: 850px; margin: 0 auto; padding: 40px 20px;">
+  <div class="bookings-header" style="margin-bottom: 30px;">
+    <h2 style="font-size: 1.8rem; font-weight: 700; color: #111; margin-bottom: 4px;">My Rental Applications</h2>
+    <p style="color: #666; font-size: 1rem;">Track the real-time confirmation status of your submitted apartment lease requests.</p>
+  </div>
+
+  <div class="bookings-list" style="display: flex; flex-direction: column; gap: 20px;" *ngIf="myBookings.length > 0; else emptyState">
+    <mat-card class="booking-card" *ngFor="let b of myBookings" style="border: 1px solid #e0e0e0; box-shadow: none !important; border-radius: 10px;">
+      <mat-card-content class="card-split" style="display: flex; justify-content: space-between; align-items: center; padding: 20px !important;">
+        <div class="info-side">
+          <span class="status-chip" 
+                [style.backgroundColor]="b.status === 'Approved' ? '#e8f5e9' : b.status === 'Declined' ? '#ffebee' : '#fff3cd'"
+                [style.color]="b.status === 'Approved' ? '#2e7d32' : b.status === 'Declined' ? '#c62828' : '#856404'"
+                style="display: inline-block; padding: 4px 10px; font-size: 0.8rem; font-weight: 700; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.3px;">
+            {{ b.status }}
+          </span>
+          <h3 style="font-size: 1.3rem; margin: 12px 0 6px 0; color: #222; font-weight: 700;">{{ b.apartmentTitle }}</h3>
+          <p style="display: flex; align-items: center; gap: 4px; color: #666; font-size: 0.95rem; margin: 0 0 8px 0;">
+            <mat-icon style="font-size: 16px; width: 16px; height: 16px; color: #3f51b5;">location_on</mat-icon> {{ b.location }}
+          </p>
+          <small style="color: #999; display: block;">Submitted on: {{ b.requestDate }}</small>
+        </div>
+
+        <div class="action-side" style="text-align: right; display: flex; flex-direction: column; gap: 12px;">
+          <div class="price-box">
+            <span class="cost" style="font-size: 1.5rem; font-weight: 800; color: #3f51b5;">€{{ b.monthlyRent }}</span>
+            <span class="per" style="color: #666; font-size: 0.9rem;"> / mo</span>
+          </div>
+          <button mat-stroked-button color="warn" (click)="onCancelRequest(b.id)" *ngIf="b.status === 'Pending'">
+            Cancel Request
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <ng-template #emptyState>
+    <div class="empty-panel" style="text-align: center; padding: 60px 20px; border: 2px dashed #e0e0e0; border-radius: 12px; background-color: #fafafa;">
+      <mat-icon style="font-size: 54px; width: 54px; height: 54px; color: #b0bec5; margin-bottom: 12px;">gite</mat-icon>
+      <h3 style="font-size: 1.4rem; color: #37474f; margin-bottom: 6px;">No Active Rental Requests</h3>
+      <p style="color: #78909c; margin-bottom: 20px;">You haven't applied for any apartments yet. Browse our listings directory to find a place!</p>
+      <button mat-flat-button color="primary" routerLink="/apartments">Explore Marketplace</button>
+    </div>
+  </ng-template>
+</div>

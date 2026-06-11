@@ -1,0 +1,157 @@
+.browser-container {
+  padding: 30px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-section {
+  margin-bottom: 35px;
+  
+  h1 {
+    font-size: 2.2rem;
+    color: #111;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  p {
+    color: #666;
+    font-size: 1.05rem;
+  }
+}
+
+.apartment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+.apartment-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid #eaeaea;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+.card-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+mat-card-header {
+  padding: 20px 20px 10px 20px;
+  
+  ::ng-deep .mat-card-header-text {
+    margin: 0 !important;
+  }
+
+  mat-card-title {
+    font-size: 1.35rem !important;
+    font-weight: 700 !important;
+    color: #1a1a1a;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+
+  mat-card-subtitle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #555 !important;
+    font-size: 0.95rem !important;
+    font-weight: 500;
+
+    .geo-icon {
+      font-size: 18px;
+      vertical-align: middle;
+      width: 18px;
+      height: 18px;
+      color: #3f51b5;
+    }
+  }
+}
+
+mat-card-content {
+  padding: 0 20px !important;
+  flex-grow: 1;
+
+  .description-text {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+.specs-inline {
+  font-size: 0.95rem;
+  color: #444;
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  .divider-pipe {
+    color: #ddd;
+    font-weight: 300;
+  }
+}
+
+.landlord-row {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  
+  strong {
+    color: #222;
+  }
+}
+
+.price-row {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 14px;
+  margin-top: 12px;
+
+  .price-tag {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #222;
+    
+    small {
+      font-size: 0.85rem;
+      color: #666;
+      font-weight: 500;
+      margin-left: 1px;
+    }
+  }
+}
+
+mat-card-actions {
+  padding: 0 20px 20px 20px !important;
+  
+  button {
+    width: 100%;
+    padding: 22px 0 !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    text-transform: none;
+  }
+}

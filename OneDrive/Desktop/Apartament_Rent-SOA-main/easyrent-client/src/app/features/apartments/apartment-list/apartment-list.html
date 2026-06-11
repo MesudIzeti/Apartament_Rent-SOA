@@ -1,0 +1,46 @@
+<div class="browser-container">
+  <div class="header-section">
+    <h1>Available Apartments</h1>
+    <p>Find your next perfect home from our verified listings across North Macedonia</p>
+  </div>
+
+  <div class="apartment-grid">
+    <mat-card class="apartment-card" *ngFor="let apt of apartments">
+      <img mat-card-image 
+           [src]="apt.imageUrl || 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500'" 
+           alt="Apartment Image" 
+           class="card-img">
+      
+      <mat-card-header>
+        <mat-card-title>{{ apt.title }}</mat-card-title>
+        <mat-card-subtitle>
+          <mat-icon class="geo-icon">location_on</mat-icon> {{ apt.location }}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p class="description-text">{{ apt.description }}</p>
+        
+        <div class="specs-inline">
+          <span>{{ apt.rooms }} {{ apt.rooms === 1 ? 'Room' : 'Rooms' }}</span>
+          <span class="divider-pipe">|</span>
+          <span>{{ apt.sqft }} m²</span>
+        </div>
+
+        <div class="landlord-row">
+          <small>Host: <strong>{{ apt.landlordName || 'Verified Host' }}</strong></small>
+        </div>
+
+        <div class="price-row">
+          <span class="price-tag">€{{ apt.price }}<small>/mo</small></span>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [routerLink]="['/apartments', apt.id]">
+          View Details
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

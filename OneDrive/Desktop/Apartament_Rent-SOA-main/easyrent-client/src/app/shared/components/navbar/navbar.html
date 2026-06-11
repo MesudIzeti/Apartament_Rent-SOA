@@ -1,0 +1,16 @@
+<nav class="navbar" style="display: flex; justify-content: space-between; padding: 15px 30px; background: #fff; border-bottom: 1px solid #eee; align-items: center;">
+  <a class="logo" routerLink="/apartments" style="font-weight: 800; font-size: 1.4rem; color: #3f51b5; text-decoration: none;">easyrent</a>
+  
+  <div class="nav-links" style="display: flex; gap: 20px;" *ngIf="isLoggedIn()">
+    <a routerLink="/apartments" style="text-decoration: none; color: #555; font-weight: 500;">Browse Apartments</a>
+    
+    <a *ngIf="getUserRole() === 'Tenant'" routerLink="/my-bookings" style="text-decoration: none; color: #555; font-weight: 500;">My Bookings</a>
+    
+    <a *ngIf="getUserRole() === 'Landlord'" routerLink="/manage-apartments" style="text-decoration: none; color: #555; font-weight: 500;">Landlord Control Center</a>
+  </div>
+
+  <div class="auth-actions">
+    <button mat-button *ngIf="!isLoggedIn()" routerLink="/login">Login</button>
+    <button mat-flat-button color="warn" *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+  </div>
+</nav>
