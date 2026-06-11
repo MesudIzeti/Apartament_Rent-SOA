@@ -12,4 +12,5 @@ public interface IBookingService
     Task<BookingDto> ApproveAsync(string landlordId, int bookingId);
     Task<BookingDto> RejectAsync(string landlordId, int bookingId);
     Task<BookingDto> CancelAsync(string tenantId, int bookingId);
+    Task<IEnumerable<BookingDto>> GetAllAsync();
 }

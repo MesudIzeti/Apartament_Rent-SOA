@@ -89,6 +89,16 @@ public class BookingService : IBookingService
         return booking.ToDto();
     }
 
+    /// <summary>
+    /// Fetches all bookings in the system without any landlord/tenant filter.
+    /// Primarily used by the Admin panel.
+    /// </summary>
+    public async Task<IEnumerable<BookingDto>> GetAllAsync()
+    {
+        var bookings = await _bookingRepo.GetAllAsync();
+        return bookings.Select(b => b.ToDto());
+    }
+
     /// <summary>Shared approve/reject path: only the owning landlord, only from Pending.</summary>
     private async Task<BookingDto> TransitionByLandlordAsync(string landlordId, int bookingId, BookingStatus target)
     {
