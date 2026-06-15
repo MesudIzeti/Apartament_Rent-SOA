@@ -103,10 +103,11 @@ builder.Services.AddValidatorsFromAssemblyContaining<RegisterValidator>();
 var app = builder.Build();
 
 // Seed roles (Admin/Landlord/Tenant) + the default Admin account on startup.
-using (var scope = app.Services.CreateScope())
-{
-    await DbSeeder.SeedAsync(scope.ServiceProvider);
-}
+// Seed roles (Admin/Landlord/Tenant) + the default Admin account on startup.
+// using (var scope = app.Services.CreateScope())
+// {
+//     await DbSeeder.SeedAsync(scope.ServiceProvider);
+// }
 
 if (app.Environment.IsDevelopment())
 {
