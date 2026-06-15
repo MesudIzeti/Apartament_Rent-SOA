@@ -39,10 +39,9 @@ builder.Services.AddSwaggerGen(c =>
                     Type = ReferenceType.SecurityScheme,
                     Id   = "Bearer"
                 }
-            }
-        },
-        Array.Empty<string>()
-    }
+            },
+            Array.Empty<string>()
+        }
     });
 });
 
@@ -108,6 +107,7 @@ var app = builder.Build();
 // {
 //      await DbSeeder.SeedAsync(scope.ServiceProvider);
 // }
+
 
 app.UseSwagger();
 app.UseSwaggerUI();
