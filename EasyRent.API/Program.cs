@@ -39,9 +39,10 @@ builder.Services.AddSwaggerGen(c =>
                     Type = ReferenceType.SecurityScheme,
                     Id   = "Bearer"
                 }
-            },
-            Array.Empty<string>()
-        }
+            }
+        },
+        Array.Empty<string>()
+    }
     });
 });
 
@@ -102,18 +103,14 @@ builder.Services.AddValidatorsFromAssemblyContaining<RegisterValidator>();
 
 var app = builder.Build();
 
-// Seed roles (Admin/Landlord/Tenant) + the default Admin account on startup.
-// Seed roles (Admin/Landlord/Tenant) + the default Admin account on startup.
+
 // using (var scope = app.Services.CreateScope())
 // {
-//     await DbSeeder.SeedAsync(scope.ServiceProvider);
+//      await DbSeeder.SeedAsync(scope.ServiceProvider);
 // }
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 app.UseCors("AllowAngular");
